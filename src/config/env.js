@@ -5,9 +5,6 @@
 
 require('dotenv').config();
 console.log('Chargement du fichier .env');
-console.log('Process ENV:', process.env);
-console.log('MONGODB_URI:', process.env.MONGODB_URI);
-
 
 const requiredEnvVars = [
   'MONGODB_URI',
