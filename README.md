@@ -2,7 +2,7 @@
 
 Pour ce projet, vous allez créer une petite API qui va servir de backend à une plateforme d'apprentissage en ligne. J'ai préparé la structure du projet avec une organisation professionnelle du code, comme vous pouvez le constater dans ce dépôt Github.
 
-# Les questions avec réponses :
+### Les questions avec réponses :
 
 **Question** : Pourquoi créer un module séparé pour les connexions aux bases de données ?
 
@@ -23,6 +23,7 @@ Pour ce projet, vous allez créer une petite API qui va servir de backend à une
 **Question** : Quelle est la différence entre un contrôleur et une route ?
 
 **Réponse** : Une route définit l'URL (ou le chemin) de l'API et la méthode HTTP associée, puis dirige les requêtes vers le contrôleur approprié. Et un contrôleur contient la logique pour traiter les requêtes, récupérer les données et renvoyer une réponse au client.
+
 **Question** : Pourquoi séparer la logique métier des routes ?
 
 **Réponse** : Séparer la logique métier des routes permet de respecter le principe de séparation des responsabilités et d'avoir une organisation modulaire. Par exemple cela rend le code plus lisible et facile à comprendre, et la logique métier peut être réutilisée dans différents contrôleurs ou services sans duplication de code.
@@ -63,7 +64,7 @@ Pour ce projet, vous allez créer une petite API qui va servir de backend à une
 
 **Réponse** : Les variables d'environnement offrent des avantages clés : elles protègent les données sensibles en les gardant hors du code source, permettent de configurer facilement différents environnements (développement, test, production), facilitent la maintenance sans modifier le code, et favorisent une collaboration sécurisée entre développeurs.
 
-# Choix et Utilisation de Postman pour Tester l'API
+### Choix et Utilisation de Postman pour Tester l'API
 Le choix technique que j'ai effectué pour tester et interagir avec l'API est Postman. Cet outil est particulièrement adapté pour l'automatisation des tests d'API grâce à son interface graphique intuitive et à ses nombreuses fonctionnalités avancées. Il permet de simuler facilement des requêtes HTTP, d'inspecter les réponses et de vérifier la conformité des données retournées par l'API.
 ![Postman](<Screenshot 2025-01-05 212021.png>)
 
