@@ -4,6 +4,19 @@
 const { ObjectId } = require('mongodb');
 const db = require('../config/db');
 
+require('dotenv').config();
+
+const { getDb } = require('../config/db');
+
+function getCollection(collectionName) {
+  const db = getDb();
+  if (!db) {
+    throw new Error('La connexion à MongoDB n\'est pas encore initialisée.');
+  }
+  return db.collection(collectionName);
+}
+
+
 // Fonctions utilitaires pour MongoDB
 async function findOneById(collection, id) {
   // TODO: Implémenter une fonction générique de recherche par ID
@@ -16,8 +29,49 @@ async function findOneById(collection, id) {
   }
 }
 
+//..
+async function findOneByField(collectionName, query) {
+  try {
+    const collection = getCollection(collectionName);
+    return await collection.findOne(query);
+  } catch (error) {
+    console.error(`Erreur lors de la recherche dans ${collectionName} :`, error);
+    throw error;
+  }
+}
+
+async function createCourse(course) {
+  try {
+    const collection = getCollection('courses');
+    const result = await collection.insertOne(course);
+
+    const createdCourse = { ...course, _id: result.insertedId };
+    return createdCourse;
+  } catch (error) {
+    console.error('Erreur lors de la création du cours:', error);
+    throw error;
+  }
+}
+
+// fonction findAll
+async function findAll(collectionName) {
+  try {
+    const db = getDb(); 
+    const collection = db.collection(collectionName);
+    const result = await collection.find({}).toArray();
+    return result;
+  } catch (error) {
+    console.error(`Erreur lors de la récupération de la collection ${collectionName}:`, error);
+    throw new Error('Erreur lors de la récupération des données');
+  }
+}
+
+
 // Export des services
 module.exports = {
   // TODO: Exporter les fonctions utilitaires
   findOneById,
+  findOneByField,
+  createCourse,
+  findAll,
 };

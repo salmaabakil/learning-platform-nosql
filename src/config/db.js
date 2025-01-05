@@ -14,9 +14,9 @@ async function connectMongo(retries = 5) {
   // TODO: Implémenter la connexion MongoDB
   try {
     console.log('Tentative de connexion à MongoDB avec URI:', config.mongodb.mongoURI);
-    mongoClient = await MongoClient.connect(config.mongodb.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoClient = await MongoClient.connect(config.mongodb.mongoURI, { useUnifiedTopology: true });
     db = mongoClient.db(config.mongodb.dbName);
-    console.log('MongoDB connecté');
+    console.log('MongoDB connecté, base de données:', db.databaseName);
   } catch (error) {
     console.error('Erreur lors de la connexion à MongoDB:', error);
     if (retries > 0) {
@@ -32,11 +32,11 @@ async function connectRedis() {
   // TODO: Implémenter la connexion Redis
   return new Promise((resolve, reject) => {
     redisClient = redis.createClient({
-      url: config.redisURI
+      url: config.redisURI,
     });
 
     redisClient.on('connect', () => {
-      console.log('Redis connected');
+      console.log('Redis connecté');
       resolve();
     });
 

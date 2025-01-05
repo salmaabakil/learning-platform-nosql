@@ -7,6 +7,7 @@ const { ObjectId } = require('mongodb');
 const db = require('../config/db');
 const mongoService = require('../services/mongoService');
 const redisService = require('../services/redisService');
+const { findAll } = require('../services/mongoService'); 
 
 async function createCourse(req, res) {
   // TODO: Implémenter la création d'un cours
@@ -62,10 +63,22 @@ async function getCourseStats(req, res) {
   }
 }
 
+//get all
+async function getAllCourses(req, res) {
+  try {
+    const courses = await findAll('courses');
+    res.status(200).json(courses);
+  } catch (error) {
+    console.error('Erreur lors de la récupération des cours:', error);
+    res.status(500).json({ message: 'Erreur lors de la récupération des cours' });
+  }
+}
+
 // Export des contrôleurs
 module.exports = {
   // TODO: Exporter les fonctions du contrôleur
   createCourse,
   getCourse,
   getCourseStats,
+  getAllCourses,
 };

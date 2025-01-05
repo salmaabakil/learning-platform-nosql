@@ -10,6 +10,9 @@ const db = require('./config/db');
 const courseRoutes = require('./routes/courseRoutes');
 const app = express();
 
+app.use(express.json());
+
+app.use('/api/courses', courseRoutes);
 async function startServer() {
   try {
     // TODO: Initialiser les connexions aux bases de données
@@ -46,3 +49,4 @@ process.on('SIGTERM', async () => {
 });
 
 startServer();
+module.exports = app;
