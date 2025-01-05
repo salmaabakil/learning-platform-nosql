@@ -10,16 +10,21 @@ const config = require('./env');
 let mongoClient, redisClient, db;
 
 
-async function connectMongo() {
+async function connectMongo(retries = 5) {
   // TODO: Implémenter la connexion MongoDB
   try {
     console.log('Tentative de connexion à MongoDB avec URI:', config.mongodb.mongoURI);
-    mongoClient = await MongoClient.connect(config.mongodb.mongoURI);
+    mongoClient = await MongoClient.connect(config.mongodb.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
     db = mongoClient.db(config.mongodb.dbName);
     console.log('MongoDB connecté');
   } catch (error) {
     console.error('Erreur lors de la connexion à MongoDB:', error);
-    setTimeout(connectMongo, 5000);
+    if (retries > 0) {
+      console.log(`Nouvelle tentative dans 5 secondes... (${retries} essais restants)`);
+      setTimeout(() => connectMongo(retries - 1), 5000);
+    } else {
+      console.log('Nombre d\'essais épuisé pour MongoDB');
+    }
   }
 }
 
@@ -36,11 +41,11 @@ async function connectRedis() {
     });
 
     redisClient.on('error', (error) => {
-      console.error('Error connecting to Redis:', error);
+      console.error('Erreur de connexion à Redis:', error);
       reject(error);
     });
 
-    redisClient.connect();
+    redisClient.connect().catch((error) => reject(error));
   });
 }
 
@@ -52,11 +57,11 @@ async function closeConnections() {
       console.log('MongoDB connection closed');
     }
     if (redisClient) {
-      redisClient.quit();
+      await redisClient.quit();
       console.log('Redis connection closed');
     }
   } catch (error) {
-    console.error('Error closing connections:', error);
+    console.error('Erreur lors de la fermeture des connexions:', error);
   }
 }
 
@@ -66,6 +71,6 @@ module.exports = {
   connectMongo,
   connectRedis,
   closeConnections,
-  db,
-  redisClient,
+  getDb: () => db,
+  getRedisClient: () => redisClient,
 };
