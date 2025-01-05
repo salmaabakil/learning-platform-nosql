@@ -25,7 +25,7 @@ async function createCourse(req, res) {
     const newCourse = await mongoService.createCourse({ title, description, instructorId });
 
     const cacheKey = `course:${newCourse._id}`;
-    await redisService.cacheData(cacheKey, newCourse, 3600); // 3600 secondes = 1 heure
+    await redisService.cacheData(cacheKey, newCourse, 3600);
 
     return res.status(201).json(newCourse);
   } catch (error) {

@@ -2,7 +2,7 @@
 // Réponse: Créer des services séparés permet d'encapsuler la logique métier et d'isoler les interactions avec des composants externes (comme les bases de données ou les systèmes de cache).
 
 const { ObjectId } = require('mongodb');
-const { createCourse } = require('../controllers/courseController');
+const db = require('../config/db');
 
 // Fonctions utilitaires pour MongoDB
 async function findOneById(collection, id) {
@@ -20,5 +20,4 @@ async function findOneById(collection, id) {
 module.exports = {
   // TODO: Exporter les fonctions utilitaires
   findOneById,
-  createCourse,
 };
