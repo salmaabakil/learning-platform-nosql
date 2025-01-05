@@ -63,30 +63,25 @@ Pour ce projet, vous allez créer une petite API qui va servir de backend à une
 
 **Réponse** : Les variables d'environnement offrent des avantages clés : elles protègent les données sensibles en les gardant hors du code source, permettent de configurer facilement différents environnements (développement, test, production), facilitent la maintenance sans modifier le code, et favorisent une collaboration sécurisée entre développeurs.
 
+# Choix et Utilisation de Postman pour Tester l'API
+Le choix technique que j'ai effectué pour tester et interagir avec l'API est Postman. Cet outil est particulièrement adapté pour l'automatisation des tests d'API grâce à son interface graphique intuitive et à ses nombreuses fonctionnalités avancées. Il permet de simuler facilement des requêtes HTTP, d'inspecter les réponses et de vérifier la conformité des données retournées par l'API.
+![Postman](<Screenshot 2025-01-05 212021.png>)
 
+Dans le cadre de mon projet, j'ai exécuté deux types de requêtes : un POST et un GET. La requête POST a été utilisée pour envoyer des données à l'API et créer des ressources sur le serveur, tandis que la requête GET m'a permis de récupérer les informations stockées sur le serveur. Ces actions m'ont permis de m'assurer que l'API fonctionne correctement et que les opérations sur les ressources sont bien prises en charge.
 
-### Aspects professionnels à noter :
-- Utilisation des variables d'environnement pour la configuration
-- Séparation claire des responsabilités (routes, contrôleurs, services)
-- Gestion propre des connexions aux bases de données
-- Organisation modulaire du code
-- Gestion des erreurs et des cas limites
-- Documentation du code
+L'utilisation de Postman m'a également permis de tester les différents scénarios de manière efficace et de valider les bonnes pratiques en termes de structure des requêtes et gestion des réponses. Cela a renforcé la robustesse et la fiabilité de l'API avant son déploiement.
+
+![POST](<Screenshot 2025-01-05 231204.png>)
+
+![CMD](<Screenshot 2025-01-05 231335.png>)
+
+![GET](<Screenshot 2025-01-05 233206.png>)
 
 ### Pour le rendu, voici ce que j'attends :
 1. Un dépôt public sur Github avec un historique de commits clair (done)
 2. Un README.md qui explique :
    - Comment installer et lancer le projet
    - La structure du projet
-   - Les choix techniques que vous avez faits
+   - Les choix techniques que vous avez faits (done)
    - Les réponses aux questions posées dans les commentaires (done)
 3. Le code complété avec tous les TODOs implémentés
-
-### Je vous conseille de procéder étape par étape :
-1. Commencez par lire et comprendre la structure du projet
-2. Répondez aux questions des commentaires dans le README
-3. Implémentez progressivement les TODOs
-4. Testez chaque fonctionnalité au fur et à mesure
-5. Documentez vos choix et vos réflexions en ajoutant des copies d'écrans à votre fichier README.md
-
-#### Bon courage
