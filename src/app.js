@@ -6,6 +6,7 @@
 const express = require('express');
 const config = require('./config/env');
 const db = require('./config/db');
+
 const courseRoutes = require('./routes/courseRoutes');
 const app = express();
 
