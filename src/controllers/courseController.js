@@ -35,7 +35,7 @@ async function createCourse(req, res) {
   }
 }
 
-//get
+//get les course
 async function getCourse(req, res) {
   try {
     const { id } = req.params;

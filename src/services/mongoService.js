@@ -29,7 +29,6 @@ async function findOneById(collection, id) {
   }
 }
 
-//..
 async function findOneByField(collectionName, query) {
   try {
     const collection = getCollection(collectionName);
@@ -53,7 +52,6 @@ async function createCourse(course) {
   }
 }
 
-// fonction findAll
 async function findAll(collectionName) {
   try {
     const db = getDb(); 
