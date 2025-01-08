@@ -64,6 +64,43 @@ async function findAll(collectionName) {
   }
 }
 
+async function updateOneById(collectionName, id, updatedFields) {
+  try {
+    const objectId = new ObjectId(id);
+    const collection = getCollection(collectionName);
+    const result = await collection.updateOne(
+      { _id: objectId },
+      { $set: updatedFields }
+    );
+
+    if (result.matchedCount === 0) {
+      return null;
+    }
+
+    return await findOneById(collectionName, id);
+  } catch (error) {
+    console.error(`Erreur lors de la mise à jour dans ${collectionName}:`, error);
+    throw new Error('Erreur lors de la mise à jour des données');
+  }
+}
+
+async function deleteOneById(collectionName, id) {
+  try {
+    const objectId = new ObjectId(id);
+    const collection = getCollection(collectionName);
+    const result = await collection.deleteOne({ _id: objectId });
+
+    if (result.deletedCount === 0) {
+      return null;
+    }
+
+    return true;
+  } catch (error) {
+    console.error(`Erreur lors de la suppression dans ${collectionName}:`, error);
+    throw new Error('Erreur lors de la suppression des données');
+  }
+}
+
 
 // Export des services
 module.exports = {
@@ -72,4 +109,6 @@ module.exports = {
   findOneByField,
   createCourse,
   findAll,
+  updateOneById,
+  deleteOneById,
 };

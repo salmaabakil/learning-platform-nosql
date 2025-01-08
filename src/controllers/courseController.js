@@ -9,6 +9,7 @@ const mongoService = require('../services/mongoService');
 const redisService = require('../services/redisService');
 const { findAll } = require('../services/mongoService'); 
 
+//Create a Course
 async function createCourse(req, res) {
   // TODO: Implémenter la création d'un cours
   try {
@@ -35,7 +36,7 @@ async function createCourse(req, res) {
   }
 }
 
-//get les course
+//get one course
 async function getCourse(req, res) {
   try {
     const { id } = req.params;
@@ -52,18 +53,8 @@ async function getCourse(req, res) {
   }
 }
 
-//get state 
-async function getCourseStats(req, res) {
-  try {
-    const stats = await mongoService.getCourseStatistics();
-    return res.status(200).json(stats);
-  } catch (error) {
-    console.error('Erreur lors de la récupération des statistiques des cours:', error);
-    return res.status(500).json({ message: 'Une erreur est survenue.' });
-  }
-}
 
-//get all
+//get all courses
 async function getAllCourses(req, res) {
   try {
     const courses = await findAll('courses');
@@ -74,11 +65,58 @@ async function getAllCourses(req, res) {
   }
 }
 
+// Update a course
+async function updateCourse(req, res) {
+  try {
+    const { id } = req.params;
+    const { title, description, instructorId } = req.body;
+
+    if (!title && !description && !instructorId) {
+      return res.status(400).json({ message: 'Au moins un champ est requis pour la mise à jour.' });
+    }
+
+    const updatedFields = {};
+    if (title) updatedFields.title = title;
+    if (description) updatedFields.description = description;
+    if (instructorId) updatedFields.instructorId = instructorId;
+
+    const updatedCourse = await mongoService.updateOneById('courses', id, updatedFields);
+
+    if (!updatedCourse) {
+      return res.status(404).json({ message: 'Cours non trouvé.' });
+    }
+
+    return res.status(200).json({ message: 'Cours mis à jour avec succès.', updatedCourse });
+  } catch (error) {
+    console.error('Erreur lors de la mise à jour du cours:', error);
+    return res.status(500).json({ message: 'Une erreur est survenue.' });
+  }
+}
+
+// Delete a course
+async function deleteCourse(req, res) {
+  try {
+    const { id } = req.params;
+
+    const deletedCourse = await mongoService.deleteOneById('courses', id);
+
+    if (!deletedCourse) {
+      return res.status(404).json({ message: 'Cours non trouvé.' });
+    }
+
+    return res.status(200).json({ message: 'Cours supprimé avec succès.' });
+  } catch (error) {
+    console.error('Erreur lors de la suppression du cours:', error);
+    return res.status(500).json({ message: 'Une erreur est survenue.' });
+  }
+}
+
 // Export des contrôleurs
 module.exports = {
   // TODO: Exporter les fonctions du contrôleur
   createCourse,
   getCourse,
-  getCourseStats,
   getAllCourses,
+  updateCourse,
+  deleteCourse,
 };

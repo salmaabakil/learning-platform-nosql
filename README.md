@@ -87,6 +87,7 @@ Le projet est organisé de manière modulaire pour faciliter la lisibilité, la 
 **src/config :**
 
 db.js : Contient la logique pour se connecter à la base MongoDB et Redis.
+
 env.js : Gère le chargement des variables d'environnement à partir du fichier .env.
 
 **src/controllers :**
@@ -100,6 +101,7 @@ courseRoutes.js : Définit les endpoints pour interagir avec les cours.
 **src/services :**
 
 mongoService.js : Fournit des fonctions pour interagir avec MongoDB.
+
 redisService.js : Fournit des fonctions pour utiliser Redis comme système de cache.
 
 **src/app.js :**
@@ -115,7 +117,11 @@ Décrit les dépendances nécessaires au projet et fournit des scripts pour le d
 Le choix technique que j'ai effectué pour tester et interagir avec l'API est Postman. Cet outil est particulièrement adapté pour l'automatisation des tests d'API grâce à son interface graphique intuitive et à ses nombreuses fonctionnalités avancées. Il permet de simuler facilement des requêtes HTTP, d'inspecter les réponses et de vérifier la conformité des données retournées par l'API.
 ![Postman](<Screenshot 2025-01-05 212021.png>)
 
-Dans le cadre de mon projet, j'ai exécuté deux types de requêtes : un POST et un GET. La requête POST a été utilisée pour envoyer des données à l'API et créer des ressources sur le serveur, tandis que la requête GET m'a permis de récupérer les informations stockées sur le serveur. Ces actions m'ont permis de m'assurer que l'API fonctionne correctement et que les opérations sur les ressources sont bien prises en charge.
+Dans le cadre de mon projet, j'ai exécuté trois types de requêtes HTTP : POST, GET et DELETE.
+La requête POST a été utilisée pour envoyer des données à l'API et créer des ressources sur le serveur.
+La requête GET m'a permis de récupérer les informations stockées sur le serveur.
+Enfin, la requête DELETE a permis de supprimer une ressource spécifique en fonction de son identifiant (ID).
+Ces opérations m'ont permis de vérifier le bon fonctionnement de l'API et de m'assurer que la gestion des ressources (création, récupération, suppression) est correctement implémentée.
 
 L'utilisation de Postman m'a également permis de tester les différents scénarios de manière efficace et de valider les bonnes pratiques en termes de structure des requêtes et gestion des réponses. Cela a renforcé la robustesse et la fiabilité de l'API avant son déploiement.
 
@@ -125,11 +131,4 @@ L'utilisation de Postman m'a également permis de tester les différents scénar
 
 ![GET](<Screenshot 2025-01-05 233206.png>)
 
-### Pour le rendu, voici ce que j'attends :
-1. Un dépôt public sur Github avec un historique de commits clair (done)
-2. Un README.md qui explique :
-   - Comment installer et lancer le projet (done)
-   - La structure du projet (done)
-   - Les choix techniques que vous avez faits (done)
-   - Les réponses aux questions posées dans les commentaires (done)
-3. Le code complété avec tous les TODOs implémentés
+![DELETE](image.png)
