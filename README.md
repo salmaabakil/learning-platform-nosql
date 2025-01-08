@@ -64,6 +64,53 @@ Pour ce projet, vous allez créer une petite API qui va servir de backend à une
 
 **Réponse** : Les variables d'environnement offrent des avantages clés : elles protègent les données sensibles en les gardant hors du code source, permettent de configurer facilement différents environnements (développement, test, production), facilitent la maintenance sans modifier le code, et favorisent une collaboration sécurisée entre développeurs.
 
+### Configuration et Exécution du Projet en Local
+
+**1. Cloner le dépôt**
+
+git clone https://github.com/salmaabakil/learning-platform-template  
+cd learning-platform-template 
+
+**2. Installer les dépendances**
+
+npm install  
+
+**3. Démarrer les services nécessaires**
+
+Base de données MongoDB : mongod  
+Serveur Redis : redis-server  
+
+### Structure du projet
+
+Le projet est organisé de manière modulaire pour faciliter la lisibilité, la maintenance et l'évolutivité. Voici une vue d'ensemble de la structure :
+
+**src/config :**
+
+db.js : Contient la logique pour se connecter à la base MongoDB et Redis.
+env.js : Gère le chargement des variables d'environnement à partir du fichier .env.
+
+**src/controllers :**
+
+courseController.js : Gère la logique métier pour les cours, comme la création.
+
+**src/routes :**
+
+courseRoutes.js : Définit les endpoints pour interagir avec les cours.
+
+**src/services :**
+
+mongoService.js : Fournit des fonctions pour interagir avec MongoDB.
+redisService.js : Fournit des fonctions pour utiliser Redis comme système de cache.
+
+**src/app.js :**
+Point d'entrée principal qui initialise le serveur, configure les middlewares et monte les routes.
+
+**.env :**
+Contient les informations sensibles (URI de la base de données, clés API, etc.) qui ne doivent pas être exposées dans le code source.
+
+**package.json :**
+Décrit les dépendances nécessaires au projet et fournit des scripts pour le développement et le déploiement.
+
 ### Choix et Utilisation de Postman pour Tester l'API
 Le choix technique que j'ai effectué pour tester et interagir avec l'API est Postman. Cet outil est particulièrement adapté pour l'automatisation des tests d'API grâce à son interface graphique intuitive et à ses nombreuses fonctionnalités avancées. Il permet de simuler facilement des requêtes HTTP, d'inspecter les réponses et de vérifier la conformité des données retournées par l'API.
 ![Postman](<Screenshot 2025-01-05 212021.png>)
@@ -81,8 +128,8 @@ L'utilisation de Postman m'a également permis de tester les différents scénar
 ### Pour le rendu, voici ce que j'attends :
 1. Un dépôt public sur Github avec un historique de commits clair (done)
 2. Un README.md qui explique :
-   - Comment installer et lancer le projet
-   - La structure du projet
+   - Comment installer et lancer le projet (done)
+   - La structure du projet (done)
    - Les choix techniques que vous avez faits (done)
    - Les réponses aux questions posées dans les commentaires (done)
 3. Le code complété avec tous les TODOs implémentés
