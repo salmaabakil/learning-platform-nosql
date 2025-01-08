@@ -92,7 +92,7 @@ env.js : Gère le chargement des variables d'environnement à partir du fichier 
 
 **src/controllers :**
 
-courseController.js : Gère la logique métier pour les cours, comme la création.
+courseController.js : Gère la logique métier pour les cours, comme la création,la modification et la suppression.
 
 **src/routes :**
 
