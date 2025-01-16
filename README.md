@@ -1,7 +1,5 @@
 # Projet de fin de module NoSQL
 
-Pour ce projet, vous allez créer une petite API qui va servir de backend à une plateforme d'apprentissage en ligne. J'ai préparé la structure du projet avec une organisation professionnelle du code, comme vous pouvez le constater dans ce dépôt Github.
-
 ### Les questions avec réponses :
 
 **Question** : Pourquoi créer un module séparé pour les connexions aux bases de données ?
@@ -123,12 +121,24 @@ La requête GET m'a permis de récupérer les informations stockées sur le serv
 Enfin, la requête DELETE a permis de supprimer une ressource spécifique en fonction de son identifiant (ID).
 Ces opérations m'ont permis de vérifier le bon fonctionnement de l'API et de m'assurer que la gestion des ressources (création, récupération, suppression) est correctement implémentée.
 
-L'utilisation de Postman m'a également permis de tester les différents scénarios de manière efficace et de valider les bonnes pratiques en termes de structure des requêtes et gestion des réponses. Cela a renforcé la robustesse et la fiabilité de l'API avant son déploiement.
+J'ai structuré ce projet en deux parties : une pour les cours et une pour les étudiants. J'ai implémenté les commandes CRUD (POST, GET, DELETE, UPDATE) pour chacune de ces entités et j'ai testé leur bon fonctionnement en utilisant Postman.
 
-![POST](<Screenshot 2025-01-05 231204.png>)
+**Courses :**
+
+![POST_COURSE](<Screenshot 2025-01-05 231204.png>)
 
 ![CMD](<Screenshot 2025-01-05 231335.png>)
 
-![GET](<Screenshot 2025-01-05 233206.png>)
+![GET_COURSE](<Screenshot 2025-01-05 233206.png>)
 
-![DELETE](image.png)
+![DELETE_COURSE](image.png)
+
+**Student :**
+
+![POST_STUDENT](image-1.png)
+
+![GET_STUDENT](image-2.png)
+
+![DELETE_COURSE](image-3.png)
+
+L'utilisation de Postman m'a également permis de tester les différents scénarios de manière efficace et de valider les bonnes pratiques en termes de structure des requêtes et gestion des réponses. Cela a renforcé la robustesse et la fiabilité de l'API avant son déploiement.

@@ -39,6 +39,7 @@ async function findOneByField(collectionName, query) {
   }
 }
 
+//course
 async function createCourse(course) {
   try {
     const collection = getCollection('courses');
@@ -49,6 +50,20 @@ async function createCourse(course) {
   } catch (error) {
     console.error('Erreur lors de la création du cours:', error);
     throw error;
+  }
+}
+
+//student
+async function createStudent(student) {
+  try {
+    const collection = getCollection('student');
+    const result = await collection.insertOne(student);
+
+    const createdStudent = { ...student, _id: result.insertedId };
+    return createdStudent;
+  } catch (error) {
+    console.error('Erreur lors de la création de l\'étudiant:', error);
+    throw new Error('Erreur lors de la création de l\'étudiant');
   }
 }
 
@@ -108,6 +123,7 @@ module.exports = {
   findOneById,
   findOneByField,
   createCourse,
+  createStudent,
   findAll,
   updateOneById,
   deleteOneById,

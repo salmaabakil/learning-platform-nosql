@@ -111,7 +111,7 @@ async function deleteCourse(req, res) {
   }
 }
 
-// Export des contrôleurs
+// Export controller
 module.exports = {
   // TODO: Exporter les fonctions du contrôleur
   createCourse,
